@@ -1,0 +1,18 @@
+﻿PawnStats {
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    bottom: 64px;
+    left: 64px;
+    background-image: url(ui/pighud.png);
+    background-repeat: no-repeat;
+    background-size: 125% 150%;
+    justify-content: center;
+    justify-items: center;
+    background-position-y: center;
+    background-position-x: -17.5%;
+
+    &.pigmask {
+        background-image: url(ui/pighud.png);
+    }
+}

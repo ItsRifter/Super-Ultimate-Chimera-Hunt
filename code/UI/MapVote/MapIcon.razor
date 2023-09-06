@@ -1,0 +1,95 @@
+﻿@namespace SUCH.UI
+
+@if (data is null)
+{
+    return;
+}
+
+<root>
+    <div class="container rounded @(!string.IsNullOrEmpty(data.Thumb) ? "thumb" : "")" @onclick=@VoteMap>
+        <div class="info">
+            @if (!string.IsNullOrEmpty(data.Org.Thumb))
+            {
+                <div class="orgavatar text-shadow rounded" style="background-image: url(@data.Org.Thumb)" />
+            }
+            <div style="flex-direction: column;">
+                <text class="title text-shadow">@data.Title</text>
+                <text class="orgname text-shadow">@data.Org.Title</text>
+            </div>
+        </div>
+        <text class="votes rounded text-shadow">
+            <text>@Votes</text>
+        </text>
+    </div>
+</root>
+
+<style>
+    MapIcon {
+        aspect-ratio: 1;
+        height: 100%;
+        width: 25%;
+        padding: 5px;
+        cursor: pointer;
+        &:hover
+
+    {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+
+    &:active {
+        transform: scale(1.0);
+    }
+
+    .thumb {
+        background-image: url(@data.Thumb);
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        background-color: #303030;
+        background-position: center;
+        background-size: contain;
+        font-size: 20px;
+        .votes
+
+    {
+        color: white;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba(black, 0.65);
+        padding: 10px 15px;
+        font-weight: bold;
+        font-size: 22px;
+        height: 50px;
+        min-width: 75px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info {
+        padding: 5px;
+        .orgavatar
+
+    {
+        width: 40px;
+        height: 40px;
+        background-color: black;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    .orgname {
+        opacity: 0.6;
+    }
+
+    }
+    }
+    }
+</style>

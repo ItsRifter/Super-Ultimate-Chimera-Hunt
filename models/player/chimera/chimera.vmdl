@@ -1,0 +1,783 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "stgnewporkultimatechimera_body.vmat"
+								to = "materials/player/chimera/chimera_alive.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+					{
+						_class = "MaterialGroup"
+						name = "alive"
+						remaps = 
+						[
+							{
+								from = "stgnewporkultimatechimera_body.vmat"
+								to = "materials/player/chimera/chimera_alive.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "dead"
+						remaps = 
+						[
+							{
+								from = "stgnewporkultimatechimera_body.vmat"
+								to = "materials/player/chimera/chimera_dead.vmat"
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/raw/chimera/Uchimera.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/raw/chimera/Bird.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "b_tailslap"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/b_tailslap.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "bite"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/bite.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = 60.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle2"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/idle2.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle3"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/idle3.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "jump"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/jump.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "jump2"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/jump2.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "jump3"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/jump3.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "run"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Single"
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 4
+								event_keys = 
+								{
+									Attachment = ""
+									Foot = "0"
+									Volume = 1.0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 6
+								event_keys = 
+								{
+									Attachment = ""
+									Foot = "0"
+									Volume = 1.0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 30
+								event_keys = 
+								{
+									Attachment = ""
+									Foot = "0"
+									Volume = 1.0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 24
+								event_keys = 
+								{
+									Attachment = ""
+									Foot = "0"
+									Volume = 1.0
+								}
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/raw/chimera/uchimeragm_anims/run.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = 60.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "Folder"
+						name = "walking"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "a_WalkE"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 16
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 36
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/raw/chimera/uchimeragm_anims/a_WalkE.smd"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "a_WalkN"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 16
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 36
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/raw/chimera/uchimeragm_anims/a_WalkN.smd"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "a_WalkS"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 16
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 36
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/raw/chimera/uchimeragm_anims/a_WalkS.smd"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "a_WalkW"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 16
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+									{
+										_class = "AnimEvent"
+										event_class = "AE_FOOTSTEP"
+										event_frame = 36
+										event_keys = 
+										{
+											Attachment = ""
+											Foot = "0"
+											Volume = 1.0
+										}
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/raw/chimera/uchimeragm_anims/a_WalkW.smd"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = "stgnewporkultimatechimera_headn"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 22.360796
+						center = [ 0.001376, -45.170681, 15.592098 ]
+					},
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = "stgnewporkultimatechimera_hipn"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 16.975981
+						center = [ 0.000239, -7.862469, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "stgnewporkultimatechimera_lshoulderj"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 5.5
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 1.184166, -0.154509, -7.834267 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "stgnewporkultimatechimera_rshoulderj"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 5.5
+						point0 = [ -0.966356, 0.33218, 4.66121 ]
+						point1 = [ 1.281564, -0.156174, -3.679685 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "stgnewporkultimatechimera_rlegj"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 5.5
+						point0 = [ -1.519524, -1.074561, 8.704023 ]
+						point1 = [ 1.281564, -0.156174, -3.679685 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "stgnewporkultimatechimera_llegj"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 5.5
+						point0 = [ -0.347557, -0.690311, 3.522717 ]
+						point1 = [ 0.788456, 1.090075, -7.036016 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "stgnewporkultimatechimera_torin"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 5.57
+						point0 = [ 0.30126, 0.306129, -1.662611 ]
+						point1 = [ -0.413773, -2.762994, 6.977043 ]
+					},
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = "stgnewporkultimatechimera_agon"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 22.360796
+						center = [ 0.00048, -15.757793, 6.380468 ]
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "button"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								parent_bone = "button"
+								surface_property = ""
+								translation_only = false
+								tags = "button"
+								hitbox_mins = [ -3.477544, -10.802761, -9.455196 ]
+								hitbox_maxs = [ 7.688582, 11.965124, 10.082559 ]
+							},
+							{
+								_class = "HitboxSphere"
+								parent_bone = "stgnewporkultimatechimera_headn"
+								surface_property = ""
+								translation_only = false
+								tags = "head"
+								center = [ 0.001338, -43.938202, 5.838181 ]
+								radius = 32.860359
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "PhysicsJointList"
+				children = 
+				[
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "stgnewporkultimatechimera_hipn"
+						child_body = "stgnewporkultimatechimera_headn"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.001643, 0.001156, 70.285141 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "stgnewporkultimatechimera_hipn"
+						child_body = "stgnewporkultimatechimera_lshoulderj"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.001593, 55.953018, 111.698906 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "stgnewporkultimatechimera_hipn"
+						child_body = "stgnewporkultimatechimera_llegj"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.001585, 122.351295, 111.698883 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "stgnewporkultimatechimera_hipn"
+						child_body = "stgnewporkultimatechimera_rlegj"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.00159, -110.134949, 111.698898 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "stgnewporkultimatechimera_hipn"
+						child_body = "stgnewporkultimatechimera_rshoulderj"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.00159, -52.323479, 111.698891 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "stgnewporkultimatechimera_hipn"
+						child_body = "stgnewporkultimatechimera_agon"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.001694, 0.002166, 103.976631 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = "animgraphs/chimera.vanmgrph"
+		base_model_name = ""
+	}
+}

@@ -1,0 +1,47 @@
+// Created by Crowbar 0.71
+version 1
+nodes
+  0 "StgNewporkUltimateChimera_TransN" -1
+  1 "StgNewporkUltimateChimera_RotN" 0
+  2 "StgNewporkUltimateChimera_HipN" 1
+  3 "StgNewporkUltimateChimera_LLegJ" 2
+  4 "StgNewporkUltimateChimera_LKneeJ" 3
+  5 "StgNewporkUltimateChimera_LFootJ" 4
+  6 "StgNewporkUltimateChimera_LToeN" 5
+  7 "StgNewporkUltimateChimera_RLegJ" 2
+  8 "StgNewporkUltimateChimera_RKneeJ" 7
+  9 "StgNewporkUltimateChimera_RFootJ" 8
+  10 "StgNewporkUltimateChimera_RToeN" 9
+  11 "StgNewporkUltimateChimera_TailNa" 2
+  12 "StgNewporkUltimateChimera_TailNb" 11
+  13 "StgNewporkUltimateChimera_TailNc" 12
+  14 "StgNewporkUltimateChimera_TailNd" 13
+  15 "StgNewporkUltimateChimera_TailNe" 14
+  16 "StgNewporkUltimateChimera_WaistN" 2
+  17 "StgNewporkUltimateChimera_AgoN" 16
+  18 "StgNewporkUltimateChimera_HeadN" 16
+  19 "StgNewporkUltimateChimera_LWingNa" 18
+  20 "StgNewporkUltimateChimera_LWingNb" 19
+  21 "StgNewporkUltimateChimera_RWingNa" 18
+  22 "StgNewporkUltimateChimera_RWingNb" 21
+  23 "button" 18
+  24 "StgNewporkUltimateChimera_JMouthN" 18
+  25 "StgNewporkUltimateChimera_ToriN" 24
+  26 "StgNewporkUltimateChimera_LShoulderJ" 16
+  27 "StgNewporkUltimateChimera_LArmJ" 26
+  28 "StgNewporkUltimateChimera_LHandN" 27
+  29 "StgNewporkUltimateChimera_RShoulderJ" 16
+  30 "StgNewporkUltimateChimera_RArmJ" 29
+  31 "StgNewporkUltimateChimera_RHandN" 30
+  32 "StgNewporkUltimateChimera_LToriwingN" 25
+  33 "StgNewporkUltimateChimera_LTorilegN" 25
+  34 "StgNewporkUltimateChimera_RTorilegN" 25
+  35 "StgNewporkUltimateChimera_RToriwingN" 25
+  36 "StgNewporkUltimateChimera_ToriheadN" 25
+  37 "StgNewporkUltimateChimera_TopN" -1
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 0.000000 0.000000 -1.570796
+    37 0.000000 0.000000 0.000000 0.000000 0.000000 -1.570796
+end

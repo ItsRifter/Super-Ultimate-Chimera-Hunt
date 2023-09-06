@@ -1,0 +1,41 @@
+﻿PlayerHoverInfo {
+    position: absolute;
+    font-family: Oswald;
+    left: 50%;
+    top: 55%;
+    font-size: 48px;
+    opacity: 0;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in;
+
+    &.show {
+        opacity: 1;
+    }
+
+    &.pigmask_ensign {
+        color: rgb(255, 120, 217);
+    }
+
+    &.pigmask_captain {
+        color: rgb(0, 107, 255);
+    }
+
+    &.pigmask_major {
+        color: rgb(27, 138, 29);
+    }
+
+    &.pigmask_colonel {
+        color: rgb(220, 220, 220);
+    }
+
+    &.chimera {
+        color: rgb(200, 45, 237);
+    }
+
+    &.ghost {
+        color: rgb(255, 255, 255);
+    }
+}

@@ -1,0 +1,35 @@
+{
+  "Title": "Super Ultimate Chimera Hunt",
+  "Type": "game",
+  "Org": "rifter",
+  "Ident": "such",
+  "Tags": null,
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "Resources": null,
+  "MenuResources": null,
+  "HasCode": true,
+  "CodePath": "/code/",
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "Metadata": {
+    "MaxPlayers": 24,
+    "MinPlayers": 1,
+    "GameNetworkType": "Multiplayer",
+    "MapSelect": "Tagged",
+    "MapList": [
+      "devbots.clubtitiboo"
+    ],
+    "RankType": "None",
+    "PerMapRanking": false,
+    "LeaderboardType": "None",
+    "ProjectTemplate": null,
+    "CsProjName": "",
+    "Summary": "",
+    "Description": "",
+    "Public": true,
+    "HttpAllowList": null,
+    "TickRate": 50
+  }
+}

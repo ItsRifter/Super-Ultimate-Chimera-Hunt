@@ -1,0 +1,36 @@
+﻿Crosshair {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX( -50% ) translateY( -50% );
+    width: 64px;
+    height: 64px;
+    background-image: url(ui/hud_pig_crosshair_dead.png);
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 1s ease;
+
+    &.show {
+        opacity: 0.25;
+    }
+
+    &.clicked {
+        opacity: 1;
+    }
+
+    &.ensign {
+        background-image: url(ui/hud_pig_crosshair_ensign.png);
+    }
+
+    &.captain {
+        background-image: url(ui/hud_pig_crosshair_captain.png);
+    }
+
+    &.major {
+        background-image: url(ui/hud_pig_crosshair_major.png);
+    }
+
+    &.colonel {
+        background-image: url(ui/hud_pig_crosshair_colonel.png);
+    }
+}
