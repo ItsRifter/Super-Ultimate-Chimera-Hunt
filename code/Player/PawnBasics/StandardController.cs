@@ -179,6 +179,8 @@ public partial class Controller : EntityComponent<BasePawn>, ISingletonComponent
 
 	public virtual float GetWishSpeed()
 	{
+		if ( Input.Down( "Walk" ) ) return WalkSpeed;
+
 		return DefaultSpeed;
 	}
 
