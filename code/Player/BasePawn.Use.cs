@@ -19,7 +19,7 @@ public partial class BasePawn
 		// Turn prediction off
 		using ( Prediction.Off() )
 		{
-			if ( Input.Pressed( InputButton.Use ) || (Input.Pressed(InputButton.PrimaryAttack) && this is not ChimeraPawn ) )
+			if ( Input.Pressed( "Use" ) || (Input.Pressed( "Attack1" ) && this is not ChimeraPawn ) )
 			{
 				Using = FindUsable();
 
@@ -30,7 +30,7 @@ public partial class BasePawn
 				}
 			}
 
-			if ( !Input.Down( InputButton.Use ) )
+			if ( !Input.Down( "Use" ) )
 			{
 				StopUsing();
 				return;

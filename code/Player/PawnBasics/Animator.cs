@@ -14,7 +14,7 @@ public partial class Animator : EntityComponent<BasePawn>, ISingletonComponent
 		helper.WithVelocity( player.Velocity );
 		helper.WithWishVelocity( controller.GetWishVelocity() );
 
-		helper.DuckLevel = Input.Down( InputButton.Duck ) ? 0.75f : 0.0f;
+		helper.DuckLevel = Input.Down( "Duck" ) ? 0.75f : 0.0f;
 
 		helper.IsGrounded = controller.GroundEntity != null;
 

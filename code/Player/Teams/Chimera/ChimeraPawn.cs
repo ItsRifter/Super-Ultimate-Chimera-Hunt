@@ -122,10 +122,10 @@ public partial class ChimeraPawn : BasePawn
 		if ( Controller?.GroundEntity == null ) return;
 		if ( SUCHGame.StaticRoundStatus != SUCHGame.RoundEnum.Active ) return;
 
-		if ( Input.Pressed( InputButton.PrimaryAttack ) )
+		if ( Input.Pressed( "Attack1" ) )
 			Bite();
 
-		if ( Input.Pressed( InputButton.SecondaryAttack ) )
+		if ( Input.Pressed( "Attack2" ) )
 			Roar();
 	}
 

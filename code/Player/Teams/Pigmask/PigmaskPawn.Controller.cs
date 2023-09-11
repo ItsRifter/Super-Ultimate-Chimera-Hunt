@@ -33,12 +33,12 @@ public partial class PigmaskController : Controller, ISingletonComponent
 
 	public override void Simulate( IClient cl )
 	{
-		if ( Input.Pressed( InputButton.Run ) && !isSprinting )
+		if ( Input.Pressed( "Run" ) && !isSprinting )
 			isSprinting = true;
 
 		base.Simulate( cl );
 
-		DoCrouching( Input.Down( InputButton.Duck ) );
+		DoCrouching( Input.Down( "Duck" ) );
 
 		if ( isSprinting )
 		{
@@ -78,7 +78,7 @@ public partial class PigmaskController : Controller, ISingletonComponent
 
 	public override float GetWishSpeed()
 	{
-		if ( Input.Down( InputButton.Duck ) )
+		if ( Input.Down( "Duck" ) )
 			return CrouchSpeed;
 		
 		if ( isSprinting )

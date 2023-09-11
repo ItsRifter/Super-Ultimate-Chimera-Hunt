@@ -1,6 +1,5 @@
 public partial class Chat
 {
-
 	[ConCmd.Client( "chat_add", CanBeCalledFromServer = true )]
 	public static void AddChatEntry( string name, string message, string playerId = "0", bool isInfo = false )
 	{

@@ -38,7 +38,7 @@ public class MrSaturn : AnimatedEntity, IUse
 		return point.Position + Vector3.Up * 50;
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	protected void TickPathSteering()
 	{
 		if ( timeThrownDropped > 7.5f && Owner == null )
@@ -76,7 +76,7 @@ public class MrSaturn : AnimatedEntity, IUse
 	}
 
 	Vector3 InputVelocity;
-	Vector3 _lookDir;
+	//Vector3 _lookDir;
 
 	protected void Move( float timeDelta )
 	{

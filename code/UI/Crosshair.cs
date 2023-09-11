@@ -21,7 +21,7 @@ public class Crosshair : Panel
 		if ( player is PigmaskPawn pig )
 		{
 			SetClassOnPigRank( pig.PigRank );
-			SetClass( "clicked", Input.Pressed( InputButton.PrimaryAttack ) );
+			SetClass( "clicked", Input.Pressed( "Attack1" ) );
 		}
 	}
 

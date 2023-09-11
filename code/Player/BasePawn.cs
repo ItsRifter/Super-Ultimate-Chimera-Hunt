@@ -77,7 +77,7 @@ public partial class BasePawn : AnimatedEntity
 	{
 		float soundScale = (this is not ChimeraPawn)? 2.5f : 5.0f;
 
-		if ( Input.Down( InputButton.Duck ) && Controller.GroundEntity != null )
+		if ( Input.Down( "Duck" ) && Controller.GroundEntity != null )
 			soundScale = 0.0f;
 
 		return Velocity.WithZ( 0 ).Length.LerpInverse( 0.0f, 200.0f ) * soundScale;
@@ -125,12 +125,8 @@ public partial class BasePawn : AnimatedEntity
 
 	public virtual void CameraSimulate( IClient cl )
 	{
-		Camera.Position = EyePosition;
-		Camera.Rotation = EyeRotation;
-
+		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 75 );
 		//Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
-
-		Camera.FirstPersonViewer = this;
 	}
 
 	public override void FrameSimulate( IClient cl )
@@ -139,7 +135,7 @@ public partial class BasePawn : AnimatedEntity
 
 		Controller?.FrameSimulate( cl );
 
-		CameraSimulate(cl);
+		CameraSimulate( cl );
 	}
 
 	public override void OnKilled()

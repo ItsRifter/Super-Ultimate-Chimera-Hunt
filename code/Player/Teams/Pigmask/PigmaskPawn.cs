@@ -119,16 +119,16 @@ public partial class PigmaskPawn : BasePawn
 	{
 		if ( IsScared || isTaunting ) return;
 		
-		if( Input.Pressed(InputButton.PrimaryAttack) )
+		if( Input.Pressed( "Attack1" ) )
 		{
 			if( FindOrThrowSaturn() )
 				return;
 		}
 
-		if ( Input.Pressed( InputButton.PrimaryAttack ) || Input.Pressed( InputButton.Use ) )
+		if ( Input.Pressed( "Attack1" ) || Input.Pressed( "Use" ) )
 			AttemptChimeraPress();
 
-		if ( Input.Pressed( InputButton.SecondaryAttack ) )
+		if ( Input.Pressed( "Attack2" ) )
 			Taunt();
 	}
 

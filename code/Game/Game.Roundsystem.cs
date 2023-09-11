@@ -38,7 +38,7 @@ public partial class SUCHGame
 
 	[Net] public float ClientTimer { get; set; }
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	protected void GameTick()
 	{
 		if ( GameStatus == GameEnum.Idle ) return;

@@ -41,7 +41,7 @@ public partial class MapVoteEntity : Entity
 			Current = null;
 	}
 
-	[Event.Client.Frame]
+	[GameEvent.Client.Frame]
 	public void OnFrame()
 	{
 		if ( _panel != null )

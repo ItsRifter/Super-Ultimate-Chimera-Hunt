@@ -33,4 +33,16 @@ public partial class GhostPawn : BasePawn
 
 		SUCHGame.DoVisibilty();
 	}
+
+	public override void CameraSimulate( IClient cl )
+	{
+		base.CameraSimulate( cl );
+
+		float hoverZ = GetBoneTransform( "head", false ).Position.z + (Vector3.Up * 12).z;
+
+		Camera.Position = EyePosition.WithZ( hoverZ );
+		Camera.Rotation = EyeRotation;
+
+		Camera.FirstPersonViewer = this;
+	}
 }

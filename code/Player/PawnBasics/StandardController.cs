@@ -155,15 +155,15 @@ public partial class Controller : EntityComponent<BasePawn>, ISingletonComponent
 
 		var vel = (rotation.Forward * fwd) + (rotation.Left * left);
 
-		if ( Input.Down( InputButton.Jump ) )
+		if ( Input.Down( "Jump" ) )
 			vel += Vector3.Up * 1;
 
 		vel = vel.Normal * 2000;
 
-		if ( Input.Down( InputButton.Run ) )
+		if ( Input.Down( "Run" ) )
 			vel *= 5.0f;
 
-		if ( Input.Down( InputButton.Duck ) )
+		if ( Input.Down( "Duck" ) )
 			vel *= 0.2f;
 
 		Velocity += vel * Time.Delta;
@@ -314,7 +314,7 @@ public partial class Controller : EntityComponent<BasePawn>, ISingletonComponent
 
 		CheckLadder();
 
-		if ( Input.Pressed( InputButton.Jump ) && GroundEntity != null )
+		if ( Input.Pressed( "Jump" ) && GroundEntity != null )
 			Jump();
 
 		if ( IsTouchingLadder )
@@ -460,18 +460,16 @@ public partial class Controller : EntityComponent<BasePawn>, ISingletonComponent
 
 		if ( IsTouchingLadder )
 		{
-			if ( Input.Pressed( InputButton.Jump ) )
+			if ( Input.Pressed( "Jump" ) )
 			{
 				Player.Velocity = LadderNormal * 100.0f;
 				IsTouchingLadder = false;
-
 				return;
 
 			}
 			else if ( Player.GroundEntity != null && LadderNormal.Dot( wishvel ) > 0 )
 			{
 				IsTouchingLadder = false;
-
 				return;
 			}
 		}
@@ -481,10 +479,10 @@ public partial class Controller : EntityComponent<BasePawn>, ISingletonComponent
 		Vector3 end = start + (IsTouchingLadder ? (LadderNormal * -1.0f) : wishvel) * ladderDistance;
 
 		var pm = Trace.Ray( start, end )
-					.Size( Hull )
-					.WithTag( "ladder" )
-					.Ignore( Player )
-					.Run();
+			.Size( Hull )
+			.WithTag( "ladder" )
+			.Ignore( Player )
+			.Run();
 
 		IsTouchingLadder = false;
 

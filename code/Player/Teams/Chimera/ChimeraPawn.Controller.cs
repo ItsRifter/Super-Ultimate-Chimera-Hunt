@@ -20,15 +20,15 @@ public partial class ChimeraController : Controller, ISingletonComponent
 
 	public override void Simulate( IClient cl )
 	{
-		if( RunStamina < 150.0f && !Input.Down(InputButton.Run) )
+		if( RunStamina < 150.0f && !Input.Down( "Run ") )
 		{
 			RunStamina += sprintDelta * Time.Delta;
 			RunStamina = RunStamina.Clamp( 0, 150.0f );
 		}
 
-		Entity.SetAnimParameter( "b_running", Velocity.LengthSquared > 0.1f && RunStamina > 0.0f && Input.Down( InputButton.Run ) );
+		Entity.SetAnimParameter( "b_running", Velocity.LengthSquared > 0.1f && RunStamina > 0.0f && Input.Down( "Run" ) );
 
-		if ( GroundEntity == null && Input.Pressed(InputButton.Jump) )
+		if ( GroundEntity == null && Input.Pressed( "Jump" ) )
 		{
 			FlapWings();
 			return;
@@ -39,7 +39,7 @@ public partial class ChimeraController : Controller, ISingletonComponent
 
 	public override float GetWishSpeed()
 	{
-		if(Input.Down(InputButton.Run) && RunStamina > 0.0f )
+		if(Input.Down( "Run" ) && RunStamina > 0.0f )
 		{
 			RunStamina -= sprintDelta * Time.Delta;
 			RunStamina = RunStamina.Clamp( 0, 150.0f );
