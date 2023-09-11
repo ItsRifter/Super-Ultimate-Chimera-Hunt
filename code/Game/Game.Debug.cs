@@ -9,7 +9,7 @@ public partial class SUCHGame
 
 	public static bool GameFreeze { get; set; }
 
-	[ConCmd.Server("such.round.start")]
+	[ConCmd.Server("such.round.start", Help = "Forces the round to start")]
 	public static void StartRoundCMD()
 	{
 		if ( !SUCHDebug ) return;
@@ -18,7 +18,7 @@ public partial class SUCHGame
 		Instance.StartRound();
 	}
 
-	[ConCmd.Server( "such.round.restart" )]
+	[ConCmd.Server( "such.round.restart", Help = "Forces the round to restart, this ends the round in a draw" )]
 	public static void RestartRoundCMD()
 	{
 		if ( !SUCHDebug ) return;
@@ -27,7 +27,7 @@ public partial class SUCHGame
 		Instance.EndRound( WinEnum.Draw );
 	}
 
-	[ConCmd.Server( "such.game.start" )]
+	[ConCmd.Server( "such.game.start", Help = "Forces the game to start" )]
 	public static void StartGameCMD()
 	{
 		if ( !SUCHDebug ) return;
@@ -36,7 +36,7 @@ public partial class SUCHGame
 		Instance.StartGame();
 	}
 
-	[ConCmd.Server( "such.game.end" )]
+	[ConCmd.Server( "such.game.end", Help = "Forces the game to stop" )]
 	public static void EndGameCMD()
 	{
 		if ( !SUCHDebug ) return;
@@ -45,7 +45,7 @@ public partial class SUCHGame
 		Instance.StopGame();
 	}
 
-	[ConCmd.Server("such.game.freeze")]
+	[ConCmd.Server("such.game.freeze", Help = "Freezes the timer during gameplay, this does not freeze players")]
 	public static void FreezeGameCMD()
 	{
 		if ( !SUCHDebug ) return;
@@ -53,55 +53,83 @@ public partial class SUCHGame
 		GameFreeze = !GameFreeze;
 	}
 
-	public enum BotAssignEnum
+	public enum AssignType
 	{
 		Ghost,
 		Pigmask,
 		Chimera
 	}
 
-	[ConCmd.Server("such.role.assign")]
-	public static void AssignRole(string targetName, BotAssignEnum assign)
+	[ConCmd.Server("such.role.assign", Help = "Assigns a team role to yourself or with a player name")]
+	public static void AssignRole( AssignType assign, string targetName = "" )
 	{
 		if ( !SUCHDebug ) return;
 
 		IClient target = null;
-
-		foreach ( IClient cl in Game.Clients )
+		IEntity oldPawn = null;
+		
+		//Player is targeting someone
+		if( !string.IsNullOrEmpty( targetName ) )
 		{
-			if ( cl.Name.ToLower().Contains( targetName.ToLower() ) )
-				target = cl;
+			//Find all clients with the given target name
+			var clients = Game.Clients
+				.Where( n => n.Name.ToLower().Contains( targetName ) )
+				.ToList();
+
+			//If no player exists with target name
+			if ( !clients.Any() )
+				Log.Error( "SUCH: No client with target name exists." );
+
+			//If more than 1 player exists with target name
+			if ( clients.Count > 1 )
+				Log.Error( "SUCH: More than one client exists with target name, be more specific." );
+
+			//If the player targeted themself with the parameter filled
+			if ( ConsoleSystem.Caller.Name.ToLower().Contains( targetName ) )
+				Log.Warning( "SUCH: Appears you targeted yourself, you can leave this parameter empty next time." );
+
+			bool success = clients.Any() && clients.Count == 1;
+			if ( !success ) return;
+
+			if ( !target.IsValid ) return;
+			oldPawn = target.Pawn;
+		}
+		//Player is targeting themselves
+		else
+		{
+			target = ConsoleSystem.Caller;
+
+			if ( !target.IsValid ) return;
+			oldPawn = target.Pawn;
 		}
 
-		if ( !target.IsValid ) return;
-
-		var oldPawn = target.Pawn;
-
+		//Give the assignment to the player
 		switch ( assign )
 		{
-			case BotAssignEnum.Ghost:
+			case AssignType.Ghost:
 				target.Pawn = new GhostPawn();
 				break;
-			case BotAssignEnum.Pigmask:
+			case AssignType.Pigmask:
 				target.Pawn = new PigmaskPawn();
 				(target.Pawn as PigmaskPawn).AssignPigRank( target );
 				break;
-			case BotAssignEnum.Chimera:
+			case AssignType.Chimera:
 				target.Pawn = new ChimeraPawn();
 				break;
 			default:
 				return;
 		}
 
+		//Delete the old pawn after successful change
 		oldPawn?.Delete();
 		DoVisibilty();
 	}
 
-	[ConCmd.Server("such.saturn.spawn")]
+	[ConCmd.Server("such.saturn.spawn", Help = "Spawns Mr. Saturn")]
 	public static void SpawnSaturnCMD()
 	{
 		if ( !SUCHDebug ) return;
 
-		new MrSaturn();
+		_ = new MrSaturn();
 	}
 }
