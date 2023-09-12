@@ -1,4 +1,6 @@
-﻿namespace SUCH;
+﻿using static SUCH.Player.PigmaskPawn;
+
+namespace SUCH;
 
 public partial class SUCHGame
 {
@@ -9,24 +11,8 @@ public partial class SUCHGame
 
 	public static bool GameFreeze { get; set; }
 
-	[ConCmd.Server("such.round.start", Help = "Forces the round to start")]
-	public static void StartRoundCMD()
-	{
-		if ( !SUCHDebug ) return;
-		if ( StaticRoundStatus == RoundEnum.Active ) return;
-
-		Instance.StartRound();
-	}
-
-	[ConCmd.Server( "such.round.restart", Help = "Forces the round to restart, this ends the round in a draw" )]
-	public static void RestartRoundCMD()
-	{
-		if ( !SUCHDebug ) return;
-		if ( StaticRoundStatus != RoundEnum.Active ) return;
-
-		Instance.EndRound( WinEnum.Draw );
-	}
-
+	//Gameplay (incl rounds)
+	#region
 	[ConCmd.Server( "such.game.start", Help = "Forces the game to start" )]
 	public static void StartGameCMD()
 	{
@@ -45,13 +31,32 @@ public partial class SUCHGame
 		Instance.StopGame();
 	}
 
-	[ConCmd.Server("such.game.freeze", Help = "Freezes the timer during gameplay, this does not freeze players")]
+	[ConCmd.Server( "such.game.freeze", Help = "Freezes the timer during gameplay, this does not freeze players" )]
 	public static void FreezeGameCMD()
 	{
 		if ( !SUCHDebug ) return;
 
 		GameFreeze = !GameFreeze;
 	}
+
+	[ConCmd.Server("such.round.start", Help = "Forces the round to start")]
+	public static void StartRoundCMD()
+	{
+		if ( !SUCHDebug ) return;
+		if ( StaticRoundStatus == RoundEnum.Active ) return;
+
+		Instance.StartRound();
+	}
+
+	[ConCmd.Server( "such.round.restart", Help = "Forces the round to restart, this ends the round in a draw" )]
+	public static void RestartRoundCMD()
+	{
+		if ( !SUCHDebug ) return;
+		if ( StaticRoundStatus != RoundEnum.Active ) return;
+
+		Instance.EndRound( WinEnum.Draw );
+	}
+	#endregion
 
 	public enum AssignType
 	{
@@ -60,7 +65,9 @@ public partial class SUCHGame
 		Chimera
 	}
 
-	[ConCmd.Server("such.role.assign", Help = "Assigns a team role to yourself or with a player name")]
+	//Player
+	#region
+	[ConCmd.Server("such.player.role.assign", Help = "Assigns a team role to yourself or with a player name")]
 	public static void AssignRole( AssignType assign, string targetName = "" )
 	{
 		if ( !SUCHDebug ) return;
@@ -122,8 +129,66 @@ public partial class SUCHGame
 
 		//Delete the old pawn after successful change
 		oldPawn?.Delete();
-		DoVisibilty();
+
+		//DoVisibilty();
 	}
+	
+	enum RankHandling
+	{
+		Increment,
+		Set,
+		Reset
+	}
+
+	static void DoPigRanks( PigmaskPawn piggy, RankHandling handle, bool respawn, int newRank = -1 )
+	{
+		if( piggy == null )
+		{
+			Log.Error( "SUCH: Player is not a pigmask" );
+			return;
+		}
+
+		switch ( handle )
+		{
+			case RankHandling.Increment: piggy.IncrementRank(); break;
+			case RankHandling.Set: piggy.SetRank( (PigRanks)newRank ); break;
+			case RankHandling.Reset: piggy.ResetRank(); break;
+		}
+
+		if ( respawn )
+			piggy.Spawn();
+	}
+
+	[ConCmd.Server( "such.player.pigrank.up", Help = "Increments the player's pig rank with an optional parameter for respawn" )]
+	public static void IncrementRankCMD(bool shouldRespawn = false)
+	{
+		if ( !SUCHDebug ) return;
+		DoPigRanks( ConsoleSystem.Caller.Pawn as PigmaskPawn, RankHandling.Increment, shouldRespawn);
+	}
+
+	[ConCmd.Server("such.player.pigrank.reset")]
+	public static void ResetRankCMD( bool shouldRespawn = false )
+	{
+		if ( !SUCHDebug ) return;
+		DoPigRanks( ConsoleSystem.Caller.Pawn as PigmaskPawn, RankHandling.Reset, shouldRespawn);
+	}
+
+	[ConCmd.Server( "such.player.pigrank.set", Help = "Sets the player's pig rank to a value" )]
+	public static void SetRankCMD( int newRank, bool shouldRespawn = false )
+	{
+		if ( !SUCHDebug ) return;
+
+		int highVal = Enum.GetValues( typeof( PigRanks ) ).Length + 1;
+
+		if(newRank < 0 || newRank > highVal )
+		{
+			Log.Error( "SUCH: Invalid value" );
+			return;
+		}
+
+		DoPigRanks( ConsoleSystem.Caller.Pawn as PigmaskPawn, RankHandling.Reset, shouldRespawn, newRank+1 );
+	}
+	#endregion
 
 	[ConCmd.Server("such.saturn.spawn", Help = "Spawns Mr. Saturn")]
 	public static void SpawnSaturnCMD()

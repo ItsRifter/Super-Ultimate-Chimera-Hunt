@@ -27,11 +27,11 @@ public class PlayerHoverInfo : Panel
 			SetClassOnPigRank( piggy.PigRank );
 	}
 
-	void SetClassOnPigRank( PigmaskPawn.PigRankEnum rank )
+	void SetClassOnPigRank( PigmaskPawn.PigRanks rank )
 	{
-		SetClass( "pigmask_ensign", rank is PigmaskPawn.PigRankEnum.Ensign );
-		SetClass( "pigmask_captain", rank is PigmaskPawn.PigRankEnum.Captain );
-		SetClass( "pigmask_major", rank is PigmaskPawn.PigRankEnum.Major );
-		SetClass( "pigmask_colonel", rank is PigmaskPawn.PigRankEnum.Colonel );
+		SetClass( "pigmask_ensign", rank is PigmaskPawn.PigRanks.Ensign );
+		SetClass( "pigmask_captain", rank is PigmaskPawn.PigRanks.Captain );
+		SetClass( "pigmask_major", rank is PigmaskPawn.PigRanks.Major );
+		SetClass( "pigmask_colonel", rank is PigmaskPawn.PigRanks.Colonel );
 	}
 }

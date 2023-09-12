@@ -12,7 +12,6 @@ public partial class SUCHGame : GameManager
 		{
 			GameStatus = GameEnum.Idle;
 			RoundStatus = RoundEnum.Idle;
-			PigRanks = new Dictionary<IClient, PigmaskPawn.PigRankEnum>();
 		}
 
 		if ( Game.IsClient )
@@ -42,10 +41,8 @@ public partial class SUCHGame : GameManager
 		var pawn = new GhostPawn();
 		client.Pawn = pawn;
 
-		PigRanks.Add( client, PigmaskPawn.PigRankEnum.Ensign );
-
 		PlayMusicToUser( To.Single( client ), "music_waiting" );
-		DoVisibilty();
+		//DoVisibilty();
 
 		if ( CanPlayGame() )
 			StartPreGame();
@@ -53,8 +50,6 @@ public partial class SUCHGame : GameManager
 
 	public override void ClientDisconnect( IClient cl, NetworkDisconnectionReason reason )
 	{
-		PigRanks.Remove( cl );
-
 		base.ClientDisconnect( cl, reason );
 
 		CheckRoundConditions();
@@ -83,19 +78,39 @@ public partial class SUCHGame : GameManager
 		return queryResult.Packages.Select( ( p ) => p.FullIdent ).ToList();
 	}
 
-	public static void SwapPawn(BasePawn oldPawn, BasePawn newPawn, bool gotoPos = false)
+	/// <summary>
+	/// Changes player pawn and deletes their original pawn
+	/// </summary>
+	/// <param name="client">The player to change their pawn</param>
+	/// <param name="teamRole">The new role to assign to the player</param>
+	/// <param name="atDeathPos">Spawn where the player died</param>
+	public static void SwapPawn(IClient client, AssignType teamRole, bool atDeathPos = false)
 	{
-		var client = oldPawn.Client;
-		Vector3 pos = oldPawn.Position;
+		IEntity pawn = client.Pawn;
+		Vector3 pos = pawn.Position;
 
-		oldPawn.Delete();
+		//Set the new pawn based on 'teamRole'
+		client.Pawn = GetNewPawn(teamRole);
+		
+		//Delete the old pawn
+		pawn.Delete();
 
-		client.Pawn = newPawn;
+		if ( atDeathPos )
+			client.Pawn.Position = pos;
 
-		if ( gotoPos )
-			newPawn.Position = pos;
+		//DoVisibilty();
+	}
 
-		DoVisibilty();
+	static IEntity GetNewPawn( AssignType role )
+	{
+		return role switch
+		{
+			AssignType.Ghost => new GhostPawn(),
+			AssignType.Pigmask => new PigmaskPawn(),
+			AssignType.Chimera => new ChimeraPawn(),
+
+			_ => new GhostPawn()
+		};
 	}
 
 	public static void DoVisibilty()

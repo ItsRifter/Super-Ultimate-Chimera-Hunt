@@ -24,9 +24,9 @@ public partial class ChimeraPawn : BasePawn
 		SetView = true;
 	}
 
-	public override void CreatePhysHull()
+	public override void CreateHull()
 	{
-		base.CreatePhysHull();
+		base.CreateHull();
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 	}
 
@@ -35,7 +35,7 @@ public partial class ChimeraPawn : BasePawn
 		base.Spawn();
 
 		SetModel( "models/player/chimera/chimera.vmdl" );
-		CreatePhysHull();
+		CreateHull();
 		Tags.Add( "chimera" );
 
 		RoarStamina = 50.0f;

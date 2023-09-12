@@ -46,10 +46,7 @@ public partial class SUCHGame
 
 		ClientTimer = RoundTimer;
 
-		Log.Info( timeForSaturnAppear );
-		
-		if( timeForSaturnAppear <= 0.0f && RoundStatus == RoundEnum.Active && !saturnAppeared )
-			SpawnMrSaturn();
+		TickActiveRound();
 
 		if ( RoundTimer > 0.0f ) return;
 
@@ -68,6 +65,15 @@ public partial class SUCHGame
 					break;
 			}
 		}
+	}
+
+	void TickActiveRound()
+	{
+		//Round isn't active or round time expired
+		if ( RoundStatus != RoundEnum.Active || RoundTimer <= 0.0f ) return;
+
+		if ( timeForSaturnAppear <= 0.0f && !saturnAppeared )
+			SpawnMrSaturn();
 	}
 
 	public void SpawnMrSaturn()

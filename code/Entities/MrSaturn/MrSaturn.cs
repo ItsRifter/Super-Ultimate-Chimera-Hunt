@@ -210,7 +210,8 @@ public class MrSaturn : AnimatedEntity, IUse
 			if ( SUCHGame.StaticRoundStatus != SUCHGame.RoundEnum.Active ) return;
 
 			chimera.OnKilled();
-			SUCHGame.PigRankUp( lastPigOwner.Client );
+			lastPigOwner.IncrementRank();
+
 			SUCHGame.Instance.EndRound( SUCHGame.WinEnum.Pigmask );
 			SUCHGame.Instance.PlaySoundToUser( To.Everyone, "roundend_pigmask_win_saturn" );
 		}

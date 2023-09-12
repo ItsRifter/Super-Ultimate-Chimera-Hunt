@@ -2,6 +2,9 @@
 
 public partial class SUCHGame
 {
+	[ConVar.Client( "such.music", Help = "Toggles music, this doesn't affect round and game music at pre/post" )]
+	public static bool PlayerMusic { get; set; } = true;
+
 	public IClient LastChimera;
 
 	public void ResetPlayers()
@@ -30,27 +33,7 @@ public partial class SUCHGame
 		var clients = GetClients().Where(x => x != LastChimera).ToArray();
 
 		foreach ( var cl in clients )
-		{
-			var pawn = new PigmaskPawn();
-			cl.Pawn = pawn;
-			pawn.AssignPigRank( cl );
-
-			switch(GetPigRank(cl))
-			{
-				case PigmaskPawn.PigRankEnum.Ensign:
-					PlaySoundToUser( To.Single( cl ), "ensign_spawn");
-					break;
-				case PigmaskPawn.PigRankEnum.Captain:
-					PlaySoundToUser( To.Single( cl ), "captain_spawn");
-					break;
-				case PigmaskPawn.PigRankEnum.Major:
-					PlaySoundToUser( To.Single( cl ), "major_spawn");
-					break;
-				case PigmaskPawn.PigRankEnum.Colonel:
-					PlaySoundToUser( To.Single( cl ), "colonel_spawn");
-					break;
-			}
-		}
+			SwapPawn( cl, AssignType.Pigmask );
 	}
 
 	public List<IClient> GetClients()
@@ -80,13 +63,19 @@ public partial class SUCHGame
 
 	Sound playing;
 
+	/// <summary>
+	/// Plays music to the player when enabled
+	/// </summary>
+	/// <param name="music">The music track to play</param>
 	[ClientRpc]
-	public void PlayMusicToUser(string sndPath)
+	public void PlayMusicToUser(string music)
 	{
+		if ( !PlayerMusic ) return;
+
 		if ( playing.IsPlaying )
 			playing.Stop();
 
-		playing = Sound.FromScreen( sndPath );
+		playing = Sound.FromScreen( music );
 	}
 
 	[ClientRpc]
@@ -96,9 +85,13 @@ public partial class SUCHGame
 			playing.Stop();
 	}
 
+	/// <summary>
+	/// Plays a sound to the client
+	/// </summary>
+	/// <param name="snd">The sound to play</param>
 	[ClientRpc]
-	public void PlaySoundToUser(string sndPath)
+	public void PlaySoundToUser(string snd)
 	{
-		Sound.FromScreen( sndPath );
+		Sound.FromScreen( snd );
 	}
 }

@@ -26,12 +26,12 @@ public partial class GhostPawn : BasePawn
 		base.Spawn();
 
 		SetModel( "models/player/ghost/ghost.vmdl" );
-		CreatePhysHull();
+		CreateHull();
 
 		Components.Create<GhostController>();
 		Components.Create<Animator>();
 
-		SUCHGame.DoVisibilty();
+		//SUCHGame.DoVisibilty();
 	}
 
 	public override void CameraSimulate( IClient cl )

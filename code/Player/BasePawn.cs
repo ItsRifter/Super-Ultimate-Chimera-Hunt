@@ -25,19 +25,30 @@ public partial class BasePawn : AnimatedEntity
 	[Net, Predicted] public Vector3 EyeLocalPosition { get; set; }
 	[Net, Predicted] public Rotation EyeLocalRotation { get; set; }
 
+	/// <summary>
+	/// Move the player to a specific spawnpoint, you can handle other logic here
+	/// </summary>
 	public virtual void MoveToSpawnpoint()
 	{
 		ResetInterpolation();
 	}
 
-	public virtual void CreatePhysHull()
+	/// <summary>
+	/// Sets up a hull for the player
+	/// </summary>
+	public virtual void CreateHull()
 	{
+		if ( PhysicsBody.IsValid() ) return;
+
 		EnableHitboxes = true;
 		EnableLagCompensation = true;
 		EnableAllCollisions = true;
 	}
 
-	public virtual void ClearPhysHull()
+	/// <summary>
+	/// Clears any hull the player has
+	/// </summary>
+	public virtual void ClearHull()
 	{
 		EnableHitboxes = false;
 		EnableLagCompensation = false;
@@ -141,9 +152,16 @@ public partial class BasePawn : AnimatedEntity
 	public override void OnKilled()
 	{
 		EnableDrawing = false;
-		ClearPhysHull();
+		ClearHull();
 	}
 
+	/// <summary>
+	/// Performs an eye trace from where the player is looking
+	/// </summary>
+	/// <param name="dist">How far can the trace go</param>
+	/// <param name="size">The size of the trace</param>
+	/// <param name="useHitbox">Should the trace collide with hitboxes</param>
+	/// <returns>The resulted trace ray</returns>
 	public TraceResult GetEyeTrace( float dist, float size = 1.0f, bool useHitbox = false )
 	{
 		TraceResult tr;

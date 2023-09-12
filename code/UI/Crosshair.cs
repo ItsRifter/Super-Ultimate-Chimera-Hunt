@@ -25,11 +25,11 @@ public class Crosshair : Panel
 		}
 	}
 
-	void SetClassOnPigRank( PigmaskPawn.PigRankEnum rank )
+	void SetClassOnPigRank( PigmaskPawn.PigRanks rank )
 	{
-		SetClass( "ensign", rank is PigmaskPawn.PigRankEnum.Ensign );
-		SetClass( "captain", rank is PigmaskPawn.PigRankEnum.Captain );
-		SetClass( "major", rank is PigmaskPawn.PigRankEnum.Major );
-		SetClass( "colonel", rank is PigmaskPawn.PigRankEnum.Colonel );
+		SetClass( "ensign", rank is PigmaskPawn.PigRanks.Ensign );
+		SetClass( "captain", rank is PigmaskPawn.PigRanks.Captain );
+		SetClass( "major", rank is PigmaskPawn.PigRanks.Major );
+		SetClass( "colonel", rank is PigmaskPawn.PigRanks.Colonel );
 	}
 }
